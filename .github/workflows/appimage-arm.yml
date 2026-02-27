@@ -34,8 +34,8 @@ jobs:
       - name: Setup Craft
         run: |
           curl -fsSL https://raw.githubusercontent.com/KDE/craft/master/setup/CraftBootstrap.py -o CraftBootstrap.py
-          # Select arm64 (option 1) and accept defaults for the rest.
-          printf "1\n\n" | python3 CraftBootstrap.py --prefix "$CRAFT_ROOT"
+          # Select arm64 (option 1) then feed empty lines for remaining prompts (defaults).
+          (printf "1\n"; yes "" ) | python3 CraftBootstrap.py --prefix "$CRAFT_ROOT"
           source "$CRAFT_ROOT/craft/craftenv.sh"
           craft --version
 
